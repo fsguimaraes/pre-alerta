@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pré-Alerta</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="js_animation.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+</head>
+<body>
+
+    <header>
+         <!-- <div class="container">
+           <h1></h1>
+         </div>
+        -->
+    <div id="captura"></div>
+                <div class="logo-title">
+                    <div class="logo">
+                        <a href="https://azulcargoexpress.smartkargo.com/" target="_blank">
+                            <img src="azulexpress1.png" alt="Azul Cargo Express">
+                        </a>
+                    </div>
+
+                    <div class="barra_logo">
+                        <span>|</span>
+                    </div>
+
+                    <div class="titulo">
+                        <h1>Pré-alerta de voo</h1>
+                    </div>
+                </div>
+            </header>
+
+            <main>
+                <section class="form-section">
+
+                <!-- Primeira Linha -->
+                    <div class="linha">
+                        <!-- Primeira Linha -->
+                        <div class="input-group pequeno">
+                            <label>Núm. do Voo</label>
+                            <input type="text" placeholder="Ex.: 1234">
+                        </div>
+
+                        <div class="input-group pequeno">
+                            <label>Data</label>
+                            <input type="date">
+                        </div>
+
+                        <div class="input-group pequeno">
+                            <label>Origem</label>
+                            <select id="origem">
+                            <!--AEROPORTOS DE ORIGEM-->
+                                    <option value="" disabled selected>Selecione</option>
+                                    <!--
+                                        <option value="">AAX</option>
+                                        <option value="">AIR</option>
+                                        <option value="">AFL</option>
+                                        <option value="">AQA</option>
+                                        <option value="">ARU</option>
+                                        <option value="">AUX</option>
+                                        <option value="">BEL</option>
+                                        <option value="">BGA</option>
+                                        <option value="">BHZ</option>
+                                        <option value="">BVH</option>
+                                        <option value="">BPG</option>
+                                        <option value="">BPS</option>
+                                        <option value="">BSB</option>
+                                        <option value="">BVB</option>
+                                        <option value="">CGB</option>
+                                        <option value="">CGH</option>
+                                        <option value="">CGR</option>
+                                        <option value="">CIZ</option>
+                                        <option value="">CNF</option>
+                                        <option value="">CPV</option>
+                                        <option value="">CWB</option>
+                                        <option value="">DOU</option>
+                                        <option value="">FEN</option>
+                                        <option value="">FLL</option>
+                                        <option value="">FLN</option>
+                                        <option value="">FOR</option>
+                                        <option value="">FRA</option>
+                                        <option value="">GIG</option>
+                                    -->    
+                                        <option value="">GRU</option>
+                                    <!--
+                                        <option value="">GYN</option>
+                                        <option value="">IGU</option>
+                                        <option value="">IOS</option>
+                                        <option value="">IPN</option>
+                                        <option value="">ITA</option>
+                                        <option value="">JDO</option>
+                                        <option value="">JOI</option>
+                                        <option value="">JPR</option>
+                                        <option value="">JPA</option>
+                                        <option value="">LIS</option>
+                                        <option value="">MAO</option>
+                                        <option value="">MCO</option>
+                                        <option value="">MOC</option>
+                                        <option value="">MVD</option>
+                                        <option value="">NAT</option>
+                                        <option value="">NVT</option>
+                                        <option value="">OPS</option>
+                                        <option value="">PHB</option>
+                                        <option value="">PMW</option>
+                                        <option value="">POA</option>
+                                        <option value="">PPB</option>
+                                        <option value="">PTO</option>
+                                        <option value="">PVH</option>
+                                        <option value="">RAO</option>
+                                        <option value="">REC</option>
+                                        <option value="">RBR</option>
+                                        <option value="">RIA</option>
+                                        <option value="">SDU</option>
+                                        <option value="">SJP</option>
+                                        <option value="">SLZ</option>
+                                        <option value="">SSA</option>
+                                        <option value="">SMT</option>
+                                        <option value="">STM</option>
+                                        <option value="">THE</option>
+                                        <option value="">UBA</option>
+                                        <option value="">UDI</option>
+                                        <option value="">VCP</option>
+                                        <option value="">VIX</option>
+                                    -->
+                                
+                                <!-- Adicione os demais -->
+                            </select>
+                        </div>
+
+                            <div class="input-group pequeno">
+                                <div class="linha-label">
+                                    <label>H/Saída</label>
+                                    <h2>(previsto)</h2>
+                                </div>
+                            <input type="time">
+                        </div>
+
+                        <div class="input-group pequeno">
+                            <label>Destino</label>
+                            <select id="destino">
+                        <!--AEROPORTOS DE DESTINO-->
+                                    <option value="" disabled selected>Selecione</option>
+                                        <option value="">BEL</option>
+                                        <option value="">CGB</option>
+                                        <option value="">CNF</option>
+                                        <option value="">CWB</option>
+                                        <option value="">POA</option>
+                                        <option value="">REC</option>
+                                        <option value="">SDU</option>
+
+                                    <!--
+                                        <option value="">AAX</option>
+                                        <option value="">AIR</option>
+                                        <option value="">AFL</option>
+                                        <option value="">AQA</option>
+                                        <option value="">ARU</option>
+                                        <option value="">AUX</option>
+                                        <option value="">BEL</option>
+                                        <option value="">BGA</option>
+                                        <option value="">BHZ</option>
+                                        <option value="">BVH</option>
+                                        <option value="">BPG</option>
+                                        <option value="">BPS</option>
+                                        <option value="">BSB</option>
+                                        <option value="">BVB</option>
+                                        <option value="">CGB</option>
+                                        <option value="">CGH</option>
+                                        <option value="">CGR</option>
+                                        <option value="">CIZ</option>
+                                        <option value="">CNF</option>
+                                        <option value="">CPV</option>
+                                        <option value="">CWB</option>
+                                        <option value="">DOU</option>
+                                        <option value="">FEN</option>
+                                        <option value="">FLL</option>
+                                        <option value="">FLN</option>
+                                        <option value="">FOR</option>
+                                        <option value="">FRA</option>
+                                        <option value="">GIG</option>
+                                        <option value="">GRU</option>
+                                        <option value="">GYN</option>
+                                        <option value="">IGU</option>
+                                        <option value="">IOS</option>
+                                        <option value="">IPN</option>
+                                        <option value="">ITA</option>
+                                        <option value="">JDO</option>
+                                        <option value="">JOI</option>
+                                        <option value="">JPR</option>
+                                        <option value="">JPA</option>
+                                        <option value="">LIS</option>
+                                        <option value="">MAO</option>
+                                        <option value="">MCO</option>
+                                        <option value="">MOC</option>
+                                        <option value="">MVD</option>
+                                        <option value="">NAT</option>
+                                        <option value="">NVT</option>
+                                        <option value="">OPS</option>
+                                        <option value="">PHB</option>
+                                        <option value="">PMW</option>
+                                        <option value="">POA</option>
+                                        <option value="">PPB</option>
+                                        <option value="">PTO</option>
+                                        <option value="">PVH</option>
+                                        <option value="">RAO</option>
+                                        <option value="">REC</option>
+                                        <option value="">RBR</option>
+                                        <option value="">RIA</option>
+                                        <option value="">SDU</option>
+                                        <option value="">SJP</option>
+                                        <option value="">SLZ</option>
+                                        <option value="">SSA</option>
+                                        <option value="">SMT</option>
+                                        <option value="">STM</option>
+                                        <option value="">THE</option>
+                                        <option value="">UBA</option>
+                                        <option value="">UDI</option>
+                                        <option value="">VCP</option>
+                                        <option value="">VIX</option>
+                                    -->
+                            </select>
+                        </div>
+
+                            <div class="input-group pequeno">
+                                <div class="linha-label">
+                                    <label>H/Chegada</label>
+                                    <h2>(previsto)</h2>
+                                </div>
+                                <input type="time">
+                            </div>
+                    </div>
+
+
+                <!-- Segunda Linha -->
+
+                <div class="linha">
+                    <div class="input-group pequeno">
+                        <label>Equip.</label>
+                            <select id="equip_acft" required>
+                                <option value="" disabled selected>Selecione</option>
+                                <option value="AT76">AT76</option>
+                                <option value="ATR(QC)">ATR(QC)</option>
+                                <option value="E190/E195">E190/E195</option>
+                                <option value="E295">E295</option>
+                                <option value="A20N">A20N</option>
+                                <option value="A21N">A21N</option>
+                                <option value="A21F">A21F</option>
+                                <option value="A332/A339">A332/A339</option>
+                            </select>  
+                    </div>
+
+                        <div class="input-group pequeno">
+                            <label>Prefixo</label>
+                            <input type="text" placeholder="Prefixo">
+                        </div>
+
+                        <div class="input-group pequeno">
+                            <label>Listagem / Manifesto</label>
+                            <input type="text" placeholder="Nº da Listagem ou Manifesto">
+                        </div>
+
+                        <div class="input-group pequeno">
+                            <label>Saída de Voo</label>
+                            <select id="saida_voo" required>
+                                <option value="" disabled selected>Selecione</option>
+                                <option value="realizado">Realizado</option>
+                                <option value="nao_realizado">Não realizado</option>    
+                                <option value="erro_sefaz">Erro/SEFAZ</option>  
+                            </select>
+                        </div>
+
+                        <div class="input-group medio">
+                            <label>Tripulante do Acompanhamento</label>
+                            <input type="text" placeholder="Nome do tripulante">
+                        </div>
+                    </div>
+               </section>
+
+                <!--LINHA DIVISÓRIA DA PÁGINA-->
+                <div class="linha-divisoria"></div>
+
+                    <!-- Tabela -->
+                <div class="titulo-e-botoes">
+                    <h3>Informações de Carga</h3>
+                    <div class="botoes-topo">
+                        <button class="copiar no-print" onclick="copiarImagemDaTela()">Copiar</button>
+                        <button class="limpar no-print" onclick="limparTabela()">Limpar</button>
+                        <button class="adicionar no-print" onclick="adicionarLinha()">+</button>
+                        <button class="remover no-print" onclick="removerUltimaLinha()">—</button>
+
+
+                    <!--<button class="copiar" onclick="copiarTabela()">Copiar</button>-->
+                        <!--
+                        <button class="copiar" onclick="copiarImagemDaTela()">Copiar</button>
+                        <button class="limpar" onclick="limparTabela()">Limpar</button>
+                        <button class="adicionar" onclick="adicionarLinha()">+</button>
+                        <button class="remover" onclick="removerUltimaLinha()">—</button>
+                        -->
+                    </div>
+                </div>
+                    <div class="tabela-container">
+                        <table id="tabela-carga">
+                            <thead>
+                                <tr>
+
+
+                                <th class="col-awb">AWB/CT-e</th>
+                                <th class="col-vols">Vols.</th>
+                                <th class="col-peso">Peso</th>
+                                <th class="col-unid">U. Med.</th>
+                                <th class="col-destino">Destino</th>
+                                <th class="col-desc">Descrição</th>
+                                <th class="col-tipo">Tipo</th>
+                                <th class="col-servico">Serviço</th>
+                                <th class="col-porao">Porão</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                    </div> 
+                    </tbody>
+                </table>
+    </div>
+
+        <!--
+        <div class="botoes-gerais">
+            <button id="btnAdicionar" onclick="adicionarLinha()">Adicionar Linha</button>
+            <button onclick="removerTodas()">Remover Tudo</button>
+        </div>
+        -->
+
+
+        <footer>
+            <h2>Todos os direitos reservados © 2025</h2><a href="#"></a>
+        </footer>
+
+    </main>
+</body>
+</html>
+

@@ -1,0 +1,613 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #f5fdff;
+    color: #333;
+}
+
+header {
+    height: 128px;
+    background-color: #041E43;
+    padding: 24px 8px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    box-shadow: 0 0 32px rgba(32, 32, 32, 0.3);
+}
+
+/* BARRA ABAIXO DO CABELAÇHO COM GRADIENTE */
+header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(
+        to right,
+        #035097,  /* mais escuro na esquerda */
+        #0981cc,  /* cor intermediária esquerda */
+        #0fb3ff,  /* mais claro no centro */
+        #0981cc,  /* cor intermediária direita */
+        #035097   /* mais escuro na direita */
+    );
+    box-shadow: 0 0 32px rgba(32, 32, 32, 0.3);
+}
+
+/* Container geral centralizado */
+.logo-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    width: 100%;
+}
+
+/* Estilo do logo */
+.logo img {
+    height: 48px;
+    transition: transform 0.2s;
+}
+
+.logo:hover img {
+    transform: scale(1.04);
+    cursor: pointer;
+}
+
+/* Estilo do separador */
+.barra_logo span {
+    display: flex;
+    color: #fff;
+    font-size: 48px;
+    font-weight: 100;
+}
+
+/* Estilo do título */
+.titulo h1 {
+    margin: 0;
+    font-size: 26px;
+    color: #fff;
+    transition: transform 0.2s;
+}
+
+.titulo:hover h1 {
+    transform: scale(1.02);
+    transition: all 0.2s;
+}
+
+main {
+    max-width: 1120px;
+    margin: 32px auto;
+    padding: 32px;
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(32, 32, 32, 0.3);
+}
+
+.form-section {
+    margin-bottom: 32px;
+}
+
+/* Layout das linhas */
+.linha {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+/* Grupos de input */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.input-group.pequeno {
+    flex: 1 1 120px;
+}
+
+.input-group.medio {
+    flex: 1 1 200px;
+}
+
+.input-group.grande {
+    flex: 2 1 400px;
+}
+
+/* Label + (previsto) na mesma linha */
+.linha-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Estilo das Labels */
+.input-group label {
+    font-weight: bold;
+    color: #242424;
+    font-size: 14px;
+    white-space: nowrap;
+    margin: 0;
+}
+
+/* Estilo do (previsto) */
+.linha-label h2 {
+    font-weight: 400;
+    font-style:normal;
+    font-size: 14px;
+    color: #747474;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* Inputs padrão */
+.input-group input,
+.input-group select {
+    padding: 8px 10px;
+    height: 36px; /* 🟦 Altura fixa */
+    border: 1px solid #0FC2FF;
+    background-color: rgba(64, 210, 255, 0.096); /*Cor do Imput/campos da tabela*/
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.2;
+    box-sizing: border-box;
+}
+
+/* Remove inconsistências dos inputs de data/hora nos navegadores */
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 36px; /* 🟦 Garante altura igual */
+}
+
+/* Foco nos inputs e selects */
+.input-group input:focus,
+.input-group select:focus {
+    background-color: #fff;
+    border-color: #0FC2ff;
+    outline: none;
+}
+
+
+/* Títulos secundários */
+.titulo-h3 {
+    margin-top: 64px;
+    margin-bottom: 16px;
+    color: #242424;
+    font-size: 16px;
+}
+
+/* FIM DO BLOCO SUPERIOR*/
+
+.linha-divisoria {
+    width: 100%;
+    height: 1px;
+    /*background-color: rgb(212, 212, 212);*//* cor da linha */
+    background: linear-gradient(
+        to right,
+        #c2c2c2,  /* mais escuro na esquerda */
+        #cacaca,  /* cor intermediária esquerda */
+        #e0e0e0,  /* mais claro no centro */
+        #cacaca,  /* cor intermediária direita */
+        #c2c2c2   /* mais escuro na direita */
+    );
+    box-shadow: 0 0px 12px rgba(148, 148, 148, 0.66); /* sobra leve e clara */
+    margin: 20px 0; /* espaçamento superior e inferior */
+}
+
+/*INICIO BLOCO*/
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+
+table thead {
+    background-color: #0FA3FF;
+    color: #fff;
+    text-align: left;
+    font-size: 14px;
+}
+
+table th, table td {
+    padding: 8px;
+    border: 1px solid #0FC2FF;
+    text-align: left;
+    color: #fff;
+    font-size: 14px;
+}
+
+.tabela-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 300px; /* Define um tamanho mínimo para gerar scroll em telas pequenas */
+}
+
+table th, table td {
+    padding: 8px 12px;
+    border: 1px solid #dbdbdb;
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    table {
+        min-width: 300px; /* Você pode ajustar esse valor conforme a quantidade de colunas */
+    }
+}
+
+table input, table select {
+    width: 100%;
+    padding: 5px;
+    border-radius: 4px;
+    background-color: rgba(64, 210, 255, 0.096); /*Cor do Imput/campos da tabela*/
+    border: 1px solid #0FC2FF;
+    color: #242424;
+    font-size: 14px;
+}
+
+table input:focus,
+table select:focus {
+    background-color: #fff;
+    border-color: #007bff;
+    outline: none;
+}
+
+
+/* Opção "Selecione" */
+option:disabled {
+    color: #999;
+}
+
+/* AJUSTE DE LARGURA DAS COLUNAS DA TABELA */
+.col-awb {
+  width: 150px;
+  max-width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+
+.col-vols {
+  width: 72px;
+  max-width: 96px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.col-peso {
+  width: 90px;
+  max-width: 110px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.col-unid {
+  width: 80px;
+  max-width: 80px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.col-destino {
+  width: 94px;
+  max-width: 116px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.col-descricao {
+  width: 210px;
+  max-width: 230px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.col-servico {
+  width: 150px;
+  max-width: 170px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.col-porao {
+  width: 92px;
+  max-width: 110px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/*TÍTULO E ALINHAMENTO DOS BOTÕES DA TABELA */
+.titulo-e-botoes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.titulo-e-botoes h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+
+/* BOTÕES DA TABELA */
+.botoes-topo {
+    display: flex;
+    gap: 6px;
+}
+
+
+.botoes-topo button.copiar {
+    padding: 4px 12px;
+    font-size: 14px;  
+    font-weight: 600;
+    background-color: #0077cc;
+    color: #fff;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.botoes-topo button.copiar:hover {
+    background-color: #005fa3;
+    transform: scale(1.05);
+}
+
+.botoes-topo button.limpar {
+    padding: 4px 12px;
+    font-size: 14px;  
+    font-weight: 600;
+    background-color: #424242;
+    color: #fff;
+    transition: background-color 0.2s, transform 0.2s;    
+}
+
+.botoes-topo button.limpar:hover {
+    background-color: #333333;
+    transform: scale(1.05);
+}
+
+
+
+.botoes-topo button {
+    padding: 4px 12px;
+    font-size: 20px;  
+    font-weight: 900;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+
+/* BOTÕES DE + E - */
+.botoes-topo button.adicionar {
+    background-color: #1d9b71;
+}
+
+.botoes-topo button.adicionar:hover {
+    background-color: #24b383;
+    transform: scale(1.05);
+}
+
+.botoes-topo button.remover {
+    background-color: #bd0f43;
+}
+
+.botoes-topo button.remover:hover {
+    background-color: #da265c;
+    transform: scale(1.05);
+}
+
+.no-print {
+    visibility: visible;
+}
+
+@media print {
+    .no-print {
+        display: none;
+    }
+}
+
+/*RODAPÉ DA PÁGINA*/
+footer {
+    background-color: #041E43;
+    height: 128px;
+    color: #333;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-top: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(32, 32, 32, 0.3);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    left: 0;  /* <- adiciona */
+    width: 100%;
+    z-index: 1000;  /* opcional para sobrepor */
+}
+
+footer h2 {
+    color: #0FC2FF;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 200;
+}
+
+footer h2:hover {
+    text-decoration: none;
+    transform: scale(1.05);
+    transition: all 0.2s;
+}
+
+/*
+footer a {
+    color: #0FA3FF;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: none;
+}
+*/
+
+@media(max-width: 768px) {
+
+    .logo-title img {
+    width: auto;
+    height: 36px;
+    }
+
+    .logo-title h1 {
+    margin: 0;
+    font-size: 20px;
+    }
+
+    header h1 {
+        font-size: 16px;
+    }
+
+    .input-group.pequeno,
+    .input-group.medio,
+    .input-group.grande {
+        flex: 1 1 100%;
+    }
+    main {
+    margin: 20px 10px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 4px rgba(32, 32, 32, 0.2);
+    }
+
+    .botoes-topo button,
+    .botoes-topo button.copiar,
+    .botoes-topo button.limpar{
+    padding: 4px 10px;
+    height: 26px;
+    font-size: 12px;  
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    transition: background-color 0.1s, transform 0.1s;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        overflow-x: auto;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    /* Definição por coluna */
+    .col-awb {
+        min-width: 160px;
+        max-width: 220px;
+    }
+
+    .col-vols {
+        min-width: 80px;
+        max-width: 100px;
+    }
+
+    .col-peso {
+        min-width: 100px;
+        max-width: 120px;
+    }
+
+    .col-unid {
+        min-width: 80px;
+        max-width: 100px;
+    }
+
+    .col-destino {
+        min-width: 96px;
+        max-width: 136px;
+    }
+
+    .col-desc {
+        min-width: 180px;
+        max-width: 200px;
+    }
+
+    .col-tipo {
+        min-width: 100px;
+        max-width: 120px;
+    }
+    .col-servico {
+        min-width: 160px;
+        max-width: 190px;
+    }
+
+    .col-porao {
+        min-width: 100px;
+        max-width: 128px;
+    }
+
+}
+
+.linha {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+/* Tamanhos padrão (desktop) */
+.input-group.pequeno {
+    flex: 1 1 120px;
+}
+
+.input-group.medio {
+    flex: 1 1 200px;
+}
+
+.input-group.grande {
+    flex: 2 1 100%;
+}
+
+/* Modo responsivo */
+@media (max-width: 768px) {
+    .input-group.pequeno,
+    .input-group.medio {
+        flex: 1 1 calc(50% - 8px); /* 2 por linha com gap */
+    }
+
+    .input-group.grande {
+        flex: 1 1 100%; /* Ocupa a linha inteira */
+    }
+}
