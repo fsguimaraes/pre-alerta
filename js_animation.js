@@ -199,14 +199,39 @@ function atualizarBotaoRemover() {
     }
 }
 
+//FUNÇAO DE LIMPAR A TABELA
 function limparTabela() {
     if (confirm('Tem certeza que deseja limpar toda a tabela? Esta ação não pode ser desfeita.')) {
-        const tbody = document.querySelector('#tabela-carga tbody');
-        tbody.innerHTML = '';
-        adicionarLinha();
-        atualizarBotaoRemover();
+    document.getElementById('btnLimpar').addEventListener('click', function () {
+    const confirmar = confirm('Tem certeza que deseja limpar todos os dados?');
+    if (!confirmar) return;
+
+    // 🗑️ Limpa a tabela
+    const tbody = document.querySelector('#tabela tbody');
+    tbody.innerHTML = '';
+
+    // 🧹 Limpa os campos especificados
+    const camposParaLimpar = [
+        'numeroVoo',
+        'horaSaida',
+        'horaChegada',
+        'destino',
+        'equipamento',
+        'prefixo',
+        'listagemManifesto',
+        'saidaVoo'
+    ];
+
+    camposParaLimpar.forEach(id => {
+        const campo = document.getElementById(id);
+        if (campo) campo.value = '';
+    });
+
+    // Não faz nada nos campos Data, Origem e Tripulante (mantém preenchidos)
+});
     }
 }
+
 
 function copiarTabela() {
     const tbody = document.querySelector('#tabela-carga tbody');

@@ -100,6 +100,7 @@ main {
 
 /* Layout das linhas */
 .linha {
+    margin-top: 24px;
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
@@ -215,6 +216,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     background-color: #fff;
+    margin-bottom: 24px;
 }
 
 table thead {
@@ -278,7 +280,7 @@ option:disabled {
     color: #999;
 }
 
-/* AJUSTE DE LARGURA DAS COLUNAS DA TABELA */
+/* ========== AJUSTE DE LARGURA DAS COLUNAS DA TABELA ========== */
 .col-awb {
   width: 150px;
   max-width: 160px;
@@ -342,7 +344,7 @@ option:disabled {
   text-overflow: ellipsis;
 }
 
-/*TÍTULO E ALINHAMENTO DOS BOTÕES DA TABELA */
+/*============== TÍTULO E ALINHAMENTO DOS BOTÕES DA TABELA ============ */
 .titulo-e-botoes {
     display: flex;
     justify-content: space-between;
@@ -356,8 +358,7 @@ option:disabled {
     color: #333;
 }
 
-
-/* BOTÕES DA TABELA */
+/* ================= OUTROS BOTÕES ================= */
 .botoes-topo {
     display: flex;
     gap: 6px;
@@ -378,7 +379,7 @@ option:disabled {
     transform: scale(1.05);
 }
 
-.botoes-topo button.limpar {
+.botoes-topo button.btnLimpar {
     padding: 4px 12px;
     font-size: 14px;  
     font-weight: 600;
@@ -387,7 +388,7 @@ option:disabled {
     transition: background-color 0.2s, transform 0.2s;    
 }
 
-.botoes-topo button.limpar:hover {
+.botoes-topo button.btnLimpar:hover {
     background-color: #333333;
     transform: scale(1.05);
 }
@@ -406,7 +407,7 @@ option:disabled {
 }
 
 
-/* BOTÕES DE + E - */
+/* ================= BOTÕES + E - ================= */
 .botoes-topo button.adicionar {
     background-color: #1d9b71;
 }
@@ -425,6 +426,8 @@ option:disabled {
     transform: scale(1.05);
 }
 
+
+/* ================= PRINT ================= */
 .no-print {
     visibility: visible;
 }
@@ -435,7 +438,8 @@ option:disabled {
     }
 }
 
-/*RODAPÉ DA PÁGINA*/
+/* ================= FOOTER ================= */
+
 footer {
     background-color: #041E43;
     height: 128px;
@@ -479,6 +483,7 @@ footer a:hover {
 }
 */
 
+/* ================= RESPONSIVIDADE ================= */
 @media(max-width: 768px) {
 
     .logo-title img {
@@ -506,6 +511,7 @@ footer a:hover {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 4px rgba(32, 32, 32, 0.2);
+    margin-bottom: 20px;
     }
 
     .botoes-topo button,
@@ -579,30 +585,33 @@ footer a:hover {
         max-width: 128px;
     }
 
-}
+    }
 
-.linha {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-}
+    .linha {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
 
-/* Tamanhos padrão (desktop) */
-.input-group.pequeno {
-    flex: 1 1 120px;
-}
+    /* Tamanhos padrão (desktop) */
+    .input-group.pequeno {
+        flex: 1 1 120px;
+    }
 
-.input-group.medio {
-    flex: 1 1 200px;
-}
+    .input-group.medio {
+        flex: 1 1 200px;
+    }
 
-.input-group.grande {
-    flex: 2 1 100%;
-}
+    .input-group.grande {
+        flex: 2 1 100%;
+    }
 
-/* Modo responsivo */
+    /* Modo responsivo */
 @media (max-width: 768px) {
-    .input-group.pequeno,
+    .input-group.pequeno{
+        flex: 1 1 calc(50% - 8px); /* 2 por linha com gap */
+    }
+
     .input-group.medio {
         flex: 1 1 calc(50% - 8px); /* 2 por linha com gap */
     }

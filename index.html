@@ -42,12 +42,12 @@
                         <!-- Primeira Linha -->
                         <div class="input-group pequeno">
                             <label>Núm. do Voo</label>
-                            <input type="text" placeholder="Ex.: 1234">
+                            <input id="numeroVoo" type="text" placeholder="Ex.: 1234">
                         </div>
 
                         <div class="input-group pequeno">
                             <label>Data</label>
-                            <input type="date">
+                            <input id="data_voo" type="date">
                         </div>
 
                         <div class="input-group pequeno">
@@ -136,7 +136,7 @@
                                     <label>H/Saída</label>
                                     <h2>(previsto)</h2>
                                 </div>
-                            <input type="time">
+                            <input id="horaSaida" type="time">
                         </div>
 
                         <div class="input-group pequeno">
@@ -229,7 +229,7 @@
                                     <label>H/Chegada</label>
                                     <h2>(previsto)</h2>
                                 </div>
-                                <input type="time">
+                                <input id="horaChegada" type="time">
                             </div>
                     </div>
 
@@ -254,17 +254,17 @@
 
                         <div class="input-group pequeno">
                             <label>Prefixo</label>
-                            <input type="text" placeholder="Prefixo">
+                            <input id="prefixo" type="text" placeholder="Prefixo">
                         </div>
 
                         <div class="input-group pequeno">
                             <label>Listagem / Manifesto</label>
-                            <input type="text" placeholder="Nº da Listagem ou Manifesto">
+                            <input id="listagemManifesto" type="text" placeholder="Nº da Listagem ou Manifesto">
                         </div>
 
                         <div class="input-group pequeno">
                             <label>Saída de Voo</label>
-                            <select id="saida_voo" required>
+                            <select id="saidaVoo" required>
                                 <option value="" disabled selected>Selecione</option>
                                 <option value="realizado">Realizado</option>
                                 <option value="nao_realizado">Não realizado</option>    
@@ -274,7 +274,7 @@
 
                         <div class="input-group medio">
                             <label>Tripulante do Acompanhamento</label>
-                            <input type="text" placeholder="Nome do tripulante">
+                            <input id="tripulante" type="text" placeholder="Nome do tripulante">
                         </div>
                     </div>
                </section>
@@ -287,7 +287,7 @@
                     <h3>Informações de Carga</h3>
                     <div class="botoes-topo">
                         <button class="copiar no-print" onclick="copiarImagemDaTela()">Copiar</button>
-                        <button class="limpar no-print" onclick="limparTabela()">Limpar</button>
+                        <button class="btnLimpar" onclick="limparTabela()">Limpar</button>
                         <button class="adicionar no-print" onclick="adicionarLinha()">+</button>
                         <button class="remover no-print" onclick="removerUltimaLinha()">—</button>
 
