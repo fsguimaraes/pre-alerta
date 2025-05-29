@@ -144,6 +144,8 @@ function atualizarOpcoesPorao(selectElement, equipValue) {
             opcoesPorao = ['1', '2'];
             break;
         case 'A20N':
+            opcoesPorao = ['1', '2', '3', '4'];
+            break;
         case 'A21N':
         case 'A332/A339':
             opcoesPorao = ['1', '2', '3', '4', '5'];
@@ -335,36 +337,40 @@ function copiarTabela() {
 
     // Cabeçalho da tabela
     mensagem += `\n📦 INFORMAÇÕES DE EMBARQUE:\n`;
-    mensagem += `╔==========================================================================================╗\n`;
-    mensagem += `║ AWB/CT-e      | Vols  | Peso    | Destino   | Tipo      | Serviço             | Porão    ║\n`; 
-    mensagem += `╚==========================================================================================╝\n`;
+    mensagem += `╔═════════════════════════════════════════════════════════════════════════════════════════════════╗\n`;
+    mensagem += `║ AWB/CT-e       | Vols  | Peso      | Destino  | Tipo     | Serviço          | Porão             ║\n`;
+    mensagem += `╠═════════════════════════════════════════════════════════════════════════════════════════════════╣\n`;
+
 
     // Processa linhas da tabela
     const linhas = document.querySelectorAll('#tabela-carga tbody tr');
 
     linhas.forEach(linha => {
-        const awb = linha.querySelector('td:nth-child(1) input')?.value.trim() || '';
-        const vols = linha.querySelector('td:nth-child(2) input')?.value.trim() || '';
-        const peso = linha.querySelector('td:nth-child(3) input')?.value.trim() || '';
-        const unid = linha.querySelector('td:nth-child(4) select')?.value.trim() || '';
-        const destino = linha.querySelector('td:nth-child(5) input')?.value.trim() || '';
-        const tipo = linha.querySelector('td:nth-child(7) select')?.value.trim() || '';
-        const servicoFormatado = linha.querySelector('td:nth-child(8) select')?.value.trim() || '';
-        const porao = linha.querySelector('td:nth-child(9) select')?.value.trim() || '';
+        const colawb = linha.querySelector('td:nth-child(1) input')?.value.trim() || '';
+        const colvols = linha.querySelector('td:nth-child(2) input')?.value.trim() || '';
+        const colpeso = linha.querySelector('td:nth-child(3) input')?.value.trim() || '';
+        const colunid = linha.querySelector('td:nth-child(4) select')?.value.trim() || '';
+        const coldestino = linha.querySelector('td:nth-child(5) input')?.value.trim() || '';
+        const coltipo = linha.querySelector('td:nth-child(7) select')?.value.trim() || '';
+        const colservico = linha.querySelector('td:nth-child(8) select')?.value.trim() || '';
+        const colporao = linha.querySelector('td:nth-child(9) select')?.value.trim() || '';
 
         // Formata valores
-        const awbFormatado = awb.length >= 3 ? `${awb.slice(0, 3)}-${awb.slice(3)}` : awb;
-        const volsFormatado = vols;
-        const pesoFormatado = `${peso} ${unid}`.toUpperCase();
-        const destinoFormatado = destino.toUpperCase();
-        const tipoFormatado = tipo.toUpperCase();
-        const poraoFormatado = porao.toUpperCase();
+        const colawbFormatado = colawb.length >= 3 ? `${awb.slice(0, 3)}-${awb.slice(3)}` : awb;
+        const colvolsFormatado = colvols;
+        const colpesoFormatado = `${colpeso} ${colunid}`.toUpperCase();
+        const coldestinoFormatado = coldestino.toUpperCase();
+        const coltipoFormatado = coltipo.toUpperCase();
+        const colservicoFormatado = colservico.toUpperCase();
+        const colporaoFormatado = colporao.toUpperCase();
 
         // Monta linha da tabela com padding fixo
-        mensagem += `║ ${awbFormatado.padEnd(16)} | ${volsFormatado.padEnd(10)} | ${pesoFormatado.padEnd(12)} | ${destinoFormatado.padEnd(12)} | ${tipoFormatado.padEnd(10)} | ${servicoFormatado.padEnd(20)} | ${poraoFormatado.padEnd(10)} ║\n`;
+        mensagem += `║ ${colawbFormatado.padEnd(15)} | ${colvolsFormatado.padEnd(6)} | ${colpesoFormatado.padEnd(10)} | ${coldestinoFormatado.padEnd(9)} | ${coltipoFormatado.padEnd(9)} | ${colservicoFormatado.padEnd(17)} | ${colporaoFormatado.padEnd(6)} ║\n`;
+
     });
 
-        mensagem += `╚==========================================================================================╝\n\n`;
+    mensagem += `╚════════════════════════════════════════════════════════════════════════════════════════════════╝\n\n`;
+
 
     // Observações
     const obs = document.getElementById('observacoes')?.value.trim();
@@ -372,7 +378,7 @@ function copiarTabela() {
         mensagem += `📌 Observações:\n${obs}\n\n`;
     }
 
-    mensagem += `Atenciosamente,\nEquipe de Cargas ✈️`;
+    mensagem += `Atenciosamente,\n`
 
     // Copia para área de transferência
     navigator.clipboard.writeText(mensagem).then(() => {

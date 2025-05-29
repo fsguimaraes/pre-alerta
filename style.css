@@ -111,7 +111,7 @@ header::after {
 }
 
 main {
-    max-width: 1120px;
+    max-width: 1100px;
     margin: 32px auto;
     padding: 32px;
     padding-bottom: 32px;
@@ -308,7 +308,7 @@ option:disabled {
 }
 
 /* ========== AJUSTE DE LARGURA DAS COLUNAS DA TABELA ========== */
-.col-awb {
+.colawb {
   width: 150px;
   max-width: 160px;
   white-space: nowrap;
@@ -316,7 +316,7 @@ option:disabled {
   text-overflow: ellipsis; 
 }
 
-.col-vols {
+.colvols {
   width: 72px;
   max-width: 96px;
   white-space: nowrap;
@@ -324,7 +324,7 @@ option:disabled {
   text-overflow: ellipsis;
 }
 
-.col-peso {
+.colpeso {
   width: 90px;
   max-width: 110px;
   white-space: nowrap;
@@ -332,7 +332,7 @@ option:disabled {
   text-overflow: ellipsis;
 }
 
-.col-unid {
+.colunid {
   width: 80px;
   max-width: 80px;
   white-space: nowrap;
@@ -340,7 +340,7 @@ option:disabled {
   text-overflow: ellipsis;
 }
 
-.col-destino {
+.coldestino {
   width: 94px;
   max-width: 116px;
   white-space: nowrap;
@@ -348,14 +348,14 @@ option:disabled {
   text-overflow: ellipsis;
 }
 
-.col-descricao {
+.coldescricao {
   width: 210px;
   max-width: 230px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.col-servico {
+.colservico {
   width: 150px;
   max-width: 170px;
   white-space: nowrap;
@@ -363,7 +363,7 @@ option:disabled {
   text-overflow: ellipsis;
 }
 
-.col-porao {
+.colporao {
   width: 92px;
   max-width: 110px;
   white-space: nowrap;
@@ -586,46 +586,46 @@ footer a:hover {
     }
 
     /* Definição por coluna */
-    .col-awb {
+    .colawb {
         min-width: 160px;
         max-width: 220px;
     }
 
-    .col-vols {
+    .colvols {
         min-width: 80px;
         max-width: 100px;
     }
 
-    .col-peso {
+    .colpeso {
         min-width: 100px;
         max-width: 120px;
     }
 
-    .col-unid {
+    .colunid {
         min-width: 80px;
         max-width: 100px;
     }
 
-    .col-destino {
-        min-width: 96px;
+    .coldestino {
+        min-width: 98px;
         max-width: 136px;
     }
 
-    .col-desc {
+    .coldesc {
         min-width: 180px;
         max-width: 200px;
     }
 
-    .col-tipo {
+    .coltipo {
         min-width: 100px;
         max-width: 120px;
     }
-    .col-servico {
+    .colservico {
         min-width: 160px;
         max-width: 190px;
     }
 
-    .col-porao {
+    .colporao {
         min-width: 100px;
         max-width: 128px;
     }
