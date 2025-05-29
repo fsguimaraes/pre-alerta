@@ -227,11 +227,11 @@ input[type="datetime-local"] {
     /*background-color: rgb(212, 212, 212);*//* cor da linha */
     background: linear-gradient(
         to right,
-        #c2c2c2,  /* mais escuro na esquerda */
+        #e0e0e0,  /* mais escuro na esquerda */
         #cacaca,  /* cor intermediária esquerda */
-        #e0e0e0,  /* mais claro no centro */
+        #c2c2c2,  /* mais claro no centro */
         #cacaca,  /* cor intermediária direita */
-        #c2c2c2   /* mais escuro na direita */
+        #e0e0e0   /* mais escuro na direita */
     );
     box-shadow: 0 0px 12px rgba(148, 148, 148, 0.66); /* sobra leve e clara */
     margin: 20px 0; /* espaçamento superior e inferior */
@@ -396,13 +396,13 @@ option:disabled {
     padding: 4px 12px;
     font-size: 14px;  
     font-weight: 600;
-    background-color: #0077cc;
+    background-color: #154b92;
     color: #fff;
     transition: background-color 0.2s, transform 0.2s;
 }
 
 .botoes-topo button.copiar:hover {
-    background-color: #005fa3;
+    background-color: #0d4eaf;
     transform: scale(1.05);
 }
 
@@ -428,7 +428,7 @@ option:disabled {
     font-weight: 900;
     cursor: pointer;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     color: #fff;
     transition: background-color 0.2s, transform 0.2s;
 }
@@ -437,6 +437,7 @@ option:disabled {
 /* ================= BOTÕES + E - ================= */
 .botoes-topo button.adicionar {
     background-color: #1d9b71;
+    border-radius: 6px;
 }
 
 .botoes-topo button.adicionar:hover {
@@ -446,10 +447,11 @@ option:disabled {
 
 .botoes-topo button.remover {
     background-color: #bd0f43;
+    border-radius: 6px;
 }
 
 .botoes-topo button.remover:hover {
-    background-color: #da265c;
+    background-color: #d41c4a;
     transform: scale(1.05);
 }
 
@@ -477,7 +479,7 @@ footer {
     text-align: center;
     padding: 10px 20px;
     font-size: 14px;
-    border-top: 1px solid #d4d4d4;
+    border-top: 1px solid #0FC2FF;
     box-shadow: 0 0 16px rgba(128, 128, 128, 0.3);
     width: 100%;
     display: flex;
@@ -689,7 +691,7 @@ footer a:hover {
 
         .input-group {
             flex: 1 1 calc(50% - 5px);
-            min-width: 150px;
+            min-width: 100px;
         }
 
         /* Último campo (Tripulante do acompanhamento) ocupa toda a linha */

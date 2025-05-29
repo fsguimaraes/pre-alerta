@@ -104,7 +104,7 @@ function atualizarSplDgr(selectTipoCarga, selectSplDgr) {
     if (tipo === "Normal (NOR/SEC)") {
         opcoes = ["NOR", "SEC"];
     } else if (tipo === "Especial (SPL)") {
-        opcoes = ["AVI", "HUM", "PER", "VAL", "VUN"];
+        opcoes = ["AVI", "HEA", "HUM", "PER", "VAL", "VUN"];
     } else if (tipo === "Perigosa (DGR)") {
         opcoes = [
             "ELI", "ELM", "ICE", "RCL", "RCM", "RDS", "REQ", "RFG", "RFL", "RFS", "RFW",
@@ -199,87 +199,49 @@ function atualizarBotaoRemover() {
     }
 }
 
+
 //FUNÇAO DE LIMPAR A TABELA
+
 function limparTabela() {
-    if (confirm('Tem certeza que deseja limpar toda a tabela? Esta ação não pode ser desfeita.')) {
-    document.getElementById('btnLimpar').addEventListener('click', function () {
-    const confirmar = confirm('Tem certeza que deseja limpar todos os dados?');
-    if (!confirmar) return;
+  if (!confirm('Tem certeza que deseja limpar toda a tabela? Esta ação não pode ser desfeita.')) {
+    return; // cancela se o usuário clicar "Cancelar"
+  }
 
-    // 🗑️ Limpa a tabela
-    const tbody = document.querySelector('#tabela tbody');
+  // Limpa o corpo da tabela (tbody)
+  const tabela = document.getElementById('tabela-carga');
+  if (!tabela) {
+    alert('Tabela não encontrada!');
+    return;
+  }
+
+  const tbody = tabela.querySelector('tbody');
+  if (tbody) {
     tbody.innerHTML = '';
-
-    // 🧹 Limpa os campos especificados
-    const camposParaLimpar = [
-        'numeroVoo',
-        'horaSaida',
-        'horaChegada',
-        'destino',
-        'equipamento',
-        'prefixo',
-        'listagemManifesto',
-        'saidaVoo'
-    ];
-
-    camposParaLimpar.forEach(id => {
-        const campo = document.getElementById(id);
-        if (campo) campo.value = '';
-    });
-
-    // Não faz nada nos campos Data, Origem e Tripulante (mantém preenchidos)
-});
+  } else {
+    // Se não tiver tbody, limpa a tabela toda menos o cabeçalho
+    while (tabela.rows.length > 1) {
+      tabela.deleteRow(1);
     }
-}
+  }
 
+  // Limpa os campos especificados (mantendo os que quer preservar)
+  const camposParaLimpar = [
+    'numeroVoo',
+    'horaSaida',
+    'horaChegada',
+    'destino',
+    'equip_acft',
+    'prefixo',
+    'listagemManifesto',
+    'saidaVoo'
+  ];
 
-function copiarTabela() {
-    const tbody = document.querySelector('#tabela-carga tbody');
-    let textoCopiado = '';
-
-    for (let tr of tbody.children) {
-        let linha = [];
-        for (let td of tr.children) {
-            let valor = '';
-            if (td.querySelector('input')) {
-                valor = td.querySelector('input').value.trim();
-            } else if (td.querySelector('select')) {
-                valor = td.querySelector('select').value.trim();
-            } else {
-                valor = td.textContent.trim();
-            }
-            linha.push(valor);
-        }
-        textoCopiado += linha.join('\t') + '\n';
+  camposParaLimpar.forEach(id => {
+    const campo = document.getElementById(id);
+    if (campo) {
+      campo.value = '';
     }
-
-    navigator.clipboard.writeText(textoCopiado).then(() => {
-        alert('Tabela copiada para a área de transferência!');
-    }).catch(() => {
-        alert('Erro ao copiar a tabela.');
-    });
-}
-
-async function copiarImagemDaTela() {
-    const captura = document.getElementById('captura');
-
-    try {
-        const canvas = await html2canvas(captura, { scale: 2 });
-        const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
-
-        if (!blob) {
-            alert('Falha ao gerar imagem');
-            return;
-        }
-
-        const item = new ClipboardItem({ 'image/png': blob });
-        await navigator.clipboard.write([item]);
-
-        alert('Imagem copiada para a área de transferência!');
-    } catch (error) {
-        alert('Erro ao copiar imagem: ' + error.message);
-        console.error(error);
-    }
+  });
 }
 
 // Inicialização
@@ -291,3 +253,132 @@ window.onload = () => {
         equipElement.addEventListener('change', atualizarPoraoDeTodasAsLinhas);
     }
 };
+
+//===== VERIFICAÇÃO DOS CAMPOS ==========//
+function verificarCampos() {
+    const camposObrigatorios = [
+        { id: 'numeroVoo', nome: 'Número do Voo' },
+        { id: 'data_voo', nome: 'Data do Voo' },
+        { id: 'origem', nome: 'Origem' },
+        { id: 'horaSaida', nome: 'Hora de Saída' },
+        { id: 'destino', nome: 'Destino' },
+        { id: 'horaChegada', nome: 'Hora de Chegada' },
+        { id: 'equip_acft', nome: 'Equipamento' },
+        { id: 'prefixo', nome: 'Prefixo' },
+    ];
+
+    let camposVazios = [];
+
+    camposObrigatorios.forEach(campo => {
+        const valor = document.getElementById(campo.id).value;
+        if (!valor) {
+            camposVazios.push(campo.nome);
+        }
+    });
+
+    const tabela = document.getElementById('tabela-carga').getElementsByTagName('tbody')[0];
+    if (tabela.rows.length === 0) {
+        camposVazios.push('Informações de Carga (Tabela)');
+    }
+
+    if (camposVazios.length > 0) {
+        alert('⚠️ Atenção! Os seguintes campos estão vazios:\n\n- ' + camposVazios.join('\n- '));
+        return false;
+    }
+
+    return true;
+}
+
+
+//===== MENSAGEM COPIADA PARA E-MAIL =====//
+
+function copiarTabela() {
+    const camposFormulario = [
+        'numeroVoo',
+        'prefixo',
+        'equip_acft',
+        'data_voo',
+        'origem',
+        'horaSaida',
+        'destino',
+        'horaChegada'
+    ];
+
+    // Cabeçalho inicial
+    let mensagem = `🚩 PRÉ-ALERTA DE VOO\n\n`;
+
+    camposFormulario.forEach(id => {
+        const elem = document.getElementById(id);
+        if (!elem) return;
+
+        const nomeCampo = {
+            numeroVoo: `✈️ Voo`,
+            prefixo: '📝 Prefixo',
+            equip_acft: '🔢 Equipamento',
+            data_voo: '📅 Data',
+            origem: '🛫 Origem',
+            horaSaida: '🕒 Hora/Saída',
+            destino: '🛬 Destino',
+            horaChegada: '🕒 Hora/Chegada',
+        }[id] || id;
+
+        let valor = (elem.value || '').toString().trim();
+
+        // Adiciona prefixo no número do voo
+        if (id === 'numeroVoo') {
+            valor = `AD-${valor}`;
+        }
+
+        mensagem += `${nomeCampo}: ${valor}\n`;
+    });
+
+
+    // Cabeçalho da tabela
+    mensagem += `\n📦 INFORMAÇÕES DE EMBARQUE:\n`;
+    mensagem += `╔==========================================================================================╗\n`;
+    mensagem += `║ AWB/CT-e      | Vols  | Peso    | Destino   | Tipo      | Serviço             | Porão    ║\n`; 
+    mensagem += `╚==========================================================================================╝\n`;
+
+    // Processa linhas da tabela
+    const linhas = document.querySelectorAll('#tabela-carga tbody tr');
+
+    linhas.forEach(linha => {
+        const awb = linha.querySelector('td:nth-child(1) input')?.value.trim() || '';
+        const vols = linha.querySelector('td:nth-child(2) input')?.value.trim() || '';
+        const peso = linha.querySelector('td:nth-child(3) input')?.value.trim() || '';
+        const unid = linha.querySelector('td:nth-child(4) select')?.value.trim() || '';
+        const destino = linha.querySelector('td:nth-child(5) input')?.value.trim() || '';
+        const tipo = linha.querySelector('td:nth-child(7) select')?.value.trim() || '';
+        const servicoFormatado = linha.querySelector('td:nth-child(8) select')?.value.trim() || '';
+        const porao = linha.querySelector('td:nth-child(9) select')?.value.trim() || '';
+
+        // Formata valores
+        const awbFormatado = awb.length >= 3 ? `${awb.slice(0, 3)}-${awb.slice(3)}` : awb;
+        const volsFormatado = vols;
+        const pesoFormatado = `${peso} ${unid}`.toUpperCase();
+        const destinoFormatado = destino.toUpperCase();
+        const tipoFormatado = tipo.toUpperCase();
+        const poraoFormatado = porao.toUpperCase();
+
+        // Monta linha da tabela com padding fixo
+        mensagem += `║ ${awbFormatado.padEnd(16)} | ${volsFormatado.padEnd(10)} | ${pesoFormatado.padEnd(12)} | ${destinoFormatado.padEnd(12)} | ${tipoFormatado.padEnd(10)} | ${servicoFormatado.padEnd(20)} | ${poraoFormatado.padEnd(10)} ║\n`;
+    });
+
+        mensagem += `╚==========================================================================================╝\n\n`;
+
+    // Observações
+    const obs = document.getElementById('observacoes')?.value.trim();
+    if (obs) {
+        mensagem += `📌 Observações:\n${obs}\n\n`;
+    }
+
+    mensagem += `Atenciosamente,\nEquipe de Cargas ✈️`;
+
+    // Copia para área de transferência
+    navigator.clipboard.writeText(mensagem).then(() => {
+        alert("✅ Mensagem copiada para a área de transferência!");
+    }).catch(err => {
+        console.error('Erro ao copiar: ', err);
+        alert("❌ Falha ao copiar mensagem.");
+    });
+}

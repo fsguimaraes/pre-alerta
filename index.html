@@ -42,18 +42,18 @@
                     <div class="linha">
                         <!-- Primeira Linha -->
                         <div class="input-group pequeno">
-                            <label>Núm. do Voo</label>
-                            <input id="numeroVoo" type="text" placeholder="Ex.: 1234">
+                            <label>Voo</label>
+                            <input id="numeroVoo" type="text" placeholder="Ex.: 4321" required>
                         </div>
 
                         <div class="input-group pequeno">
                             <label>Data</label>
-                            <input id="data_voo" type="date">
+                            <input id="data_voo" type="date" required>
                         </div>
 
                         <div class="input-group pequeno">
                             <label>Origem</label>
-                            <select id="origem">
+                            <select id="origem" required>
                             <!--AEROPORTOS DE ORIGEM-->
                                     <option value="" disabled selected>Selecione</option>
                                     <!--
@@ -137,12 +137,12 @@
                                     <label>H/Saída</label>
                                     <h2>(previsto)</h2>
                                 </div>
-                            <input id="horaSaida" type="time">
+                            <input id="horaSaida" type="time" required>
                         </div>
 
                         <div class="input-group pequeno">
                             <label>Destino</label>
-                            <select id="destino">
+                            <select id="destino" required>
                         <!--AEROPORTOS DE DESTINO-->
                                     <option value="" disabled selected>Selecione</option>
                                         <option value="">BEL</option>
@@ -230,7 +230,7 @@
                                     <label>H/Chegada</label>
                                     <h2>(previsto)</h2>
                                 </div>
-                                <input id="horaChegada" type="time">
+                                <input id="horaChegada" type="time" required>
                             </div>
                     </div>
                  </div>    
@@ -256,12 +256,12 @@
 
                         <div class="input-group pequeno">
                             <label>Prefixo</label>
-                            <input id="prefixo" type="text" placeholder="Prefixo">
+                            <input id="prefixo" type="text" placeholder="" required>
                         </div>
 
                         <div class="input-group pequeno">
                             <label>Listagem / Manifesto</label>
-                            <input id="listagemManifesto" type="text" placeholder="Nº da Listagem ou Manifesto">
+                            <input id="listagemManifesto" type="text" placeholder="">
                         </div>
 
                         <div class="input-group pequeno">
@@ -276,7 +276,7 @@
 
                         <div class="input-group medio">
                             <label>Tripulante do Acompanhamento</label>
-                            <input id="tripulante" type="text" placeholder="Nome do tripulante">
+                            <input id="tripulante" type="text" placeholder="">
                         </div>
                     </div>
                </section>
@@ -285,11 +285,12 @@
                 <div class="linha-divisoria"></div>
 
                     <!-- Tabela -->
+
                 <div class="titulo-e-botoes">
-                    <h3>Informações de Carga</h3>
+                    <h3>Informações de Embarque</h3>
                     <div class="botoes-topo">
-                        <button class="copiar no-print" onclick="copiarImagemDaTela()">Copiar</button>
-                        <button class="btnLimpar" onclick="limparTabela()">Limpar</button>
+                        <button class="copiar no-print" onclick="copiarTabela()">Copiar</button>
+                    <!--<button class="btnLimpar" onclick="limparTabela()">Limpar</button>-->
                         <button class="adicionar no-print" onclick="adicionarLinha()">+</button>
                         <button class="remover no-print" onclick="removerUltimaLinha()">—</button>
 
