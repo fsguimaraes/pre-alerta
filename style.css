@@ -32,7 +32,7 @@ header::after {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 6px;
+    height: 5px;
     background: linear-gradient(
         to right,
         #035097,  /* mais escuro na esquerda */
@@ -536,6 +536,10 @@ footer a:hover {
     font-style: normal;
     }
 
+    header::after {
+    height: 4px;
+    }
+
     main {
     margin: 20px 10px;
     padding: 20px;
@@ -638,18 +642,26 @@ footer a:hover {
         flex: 1 1 180px;
     }
 
-    /* Modo responsivo */
-@media (max-width: 768px) {
-    .input-group.pequeno{
-        flex: 1 1 calc(50% - 8px); /* 2 por linha com gap */
+/* Responsividade */
+    @media (max-width: 768px) {
+        .input-group.pequeno {
+            flex: 1 1 calc(50% - 8px); /* Continua 2 por linha no tablet */
+        }
+
+        .input-group.medio {
+            flex: 1 1 100%; /* Linha inteira */
+        }
     }
 
-    .input-group.medio {
-        flex: 1 1 100%; /* Ocupa a linha inteira */
+    @media (max-width: 480px) {
+        .input-group.pequeno {
+            flex: 1 1 100%; /* Mobile: 1 por linha */
+        }
     }
+
 
     main {
-        padding-bottom: 180px; /* espaço extra no mobile */
+        padding-bottom: 32px; /* espaço extra no mobile */
     }
-    }
+
 
