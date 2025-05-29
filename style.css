@@ -65,13 +65,36 @@ header::after {
 }
 
 /* Estilo do separador */
+
+
+.linha-divisoria {
+    width: 1px;
+    height: 48px;
+    /*background-color: rgb(212, 212, 212);*//* cor da linha */
+    background: linear-gradient(
+        to right,
+        #c2c2c2,  /* mais escuro na esquerda */
+        #cacaca,  /* cor intermediária esquerda */
+        #e0e0e0,  /* mais claro no centro */
+        #cacaca,  /* cor intermediária direita */
+        #c2c2c2   /* mais escuro na direita */
+    );
+    box-shadow: 0 0px 12px rgba(148, 148, 148, 0.66); /* sobra leve e clara */
+    margin: 10px 10px; /* espaçamento superior e inferior */
+}
+
+
+
+/*
 .barra_logo span {
     display: flex;
     color: #fff;
     font-size: 48px;
+    font-style: normal;
     font-weight: 100;
+    box-shadow: 0 0 32px rgba(32, 32, 32, 0.3);
 }
-
+*/
 /* Estilo do título */
 .titulo h1 {
     margin: 0;
@@ -89,6 +112,7 @@ main {
     max-width: 1120px;
     margin: 32px auto;
     padding: 32px;
+    padding-bottom: 32px;
     background-color: #f5f5f5;
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(32, 32, 32, 0.3);
@@ -354,8 +378,8 @@ option:disabled {
 
 .titulo-e-botoes h3 {
     margin: 0;
-    font-size: 18px;
-    color: #333;
+    font-size: 16px;
+    color: #242424;
 }
 
 /* ================= OUTROS BOTÕES ================= */
@@ -442,7 +466,7 @@ option:disabled {
 
 footer {
     background-color: #041E43;
-    height: 128px;
+    height: 120px;
     color: #333;
     text-align: center;
     padding: 10px 20px;
@@ -493,11 +517,11 @@ footer a:hover {
 
     .logo-title h1 {
     margin: 0;
-    font-size: 20px;
+    font-size: 16px;
     }
 
     header h1 {
-        font-size: 16px;
+    font-size: 16px;
     }
 
     .input-group.pequeno,
@@ -505,6 +529,13 @@ footer a:hover {
     .input-group.grande {
         flex: 1 1 100%;
     }
+
+    .barra_logo span {
+    color: #fff;
+    font-size: 32px;
+    font-style: normal;
+    }
+
     main {
     margin: 20px 10px;
     padding: 20px;
@@ -512,6 +543,11 @@ footer a:hover {
     border-radius: 10px;
     box-shadow: 0 0 4px rgba(32, 32, 32, 0.2);
     margin-bottom: 20px;
+    }
+
+    .titulo-e-botoes h3 {
+    margin: 0;
+    font-size: 16px;
     }
 
     .botoes-topo button,
@@ -599,11 +635,7 @@ footer a:hover {
     }
 
     .input-group.medio {
-        flex: 1 1 200px;
-    }
-
-    .input-group.grande {
-        flex: 2 1 100%;
+        flex: 1 1 180px;
     }
 
     /* Modo responsivo */
@@ -613,10 +645,11 @@ footer a:hover {
     }
 
     .input-group.medio {
-        flex: 1 1 calc(50% - 8px); /* 2 por linha com gap */
-    }
-
-    .input-group.grande {
         flex: 1 1 100%; /* Ocupa a linha inteira */
     }
-}
+
+    main {
+        padding-bottom: 180px; /* espaço extra no mobile */
+    }
+    }
+
