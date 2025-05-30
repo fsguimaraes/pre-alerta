@@ -340,7 +340,7 @@ option:disabled {
   text-overflow: ellipsis;
 }
 
-.coldestino {
+.coldestinocga {
   width: 94px;
   max-width: 116px;
   white-space: nowrap;
@@ -348,7 +348,7 @@ option:disabled {
   text-overflow: ellipsis;
 }
 
-.coldescricao {
+.coldesc {
   width: 210px;
   max-width: 230px;
   white-space: nowrap;
@@ -606,7 +606,7 @@ footer a:hover {
         max-width: 100px;
     }
 
-    .coldestino {
+    .coldestinocga {
         min-width: 98px;
         max-width: 136px;
     }

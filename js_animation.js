@@ -144,7 +144,7 @@ function atualizarOpcoesPorao(selectElement, equipValue) {
             opcoesPorao = ['1', '2'];
             break;
         case 'A20N':
-            opcoesPorao = ['1', '2', '3', '4'];
+            opcoesPorao = ['1', '3', '4', '5'];
             break;
         case 'A21N':
         case 'A332/A339':
@@ -293,7 +293,6 @@ function verificarCampos() {
 
 
 //===== MENSAGEM COPIADA PARA E-MAIL =====//
-
 function copiarTabela() {
     const camposFormulario = [
         'numeroVoo',
@@ -326,7 +325,6 @@ function copiarTabela() {
 
         let valor = (elem.value || '').toString().trim();
 
-        // Adiciona prefixo no número do voo
         if (id === 'numeroVoo') {
             valor = `AD-${valor}`;
         }
@@ -334,15 +332,12 @@ function copiarTabela() {
         mensagem += `${nomeCampo}: ${valor}\n`;
     });
 
-
     // Cabeçalho da tabela
     mensagem += `\n📦 INFORMAÇÕES DE EMBARQUE:\n`;
-    mensagem += `╔═════════════════════════════════════════════════════════════════════════════════════════════════╗\n`;
-    mensagem += `║ AWB/CT-e       | Vols  | Peso      | Destino  | Tipo     | Serviço          | Porão             ║\n`;
-    mensagem += `╠═════════════════════════════════════════════════════════════════════════════════════════════════╣\n`;
+    mensagem += `╔════════════════════════════════════════════════════════════════════════════════════════════════════════════╗\n`;
+    mensagem += `║ AWB/CT-e       | Vols | Peso       | Destino | Tipo | Serviço      | Porão ║\n`;
+    mensagem += `╠════════════════════════════════════════════════════════════════════════════════════════════════════════════╣\n`;
 
-
-    // Processa linhas da tabela
     const linhas = document.querySelectorAll('#tabela-carga tbody tr');
 
     linhas.forEach(linha => {
@@ -355,8 +350,7 @@ function copiarTabela() {
         const colservico = linha.querySelector('td:nth-child(8) select')?.value.trim() || '';
         const colporao = linha.querySelector('td:nth-child(9) select')?.value.trim() || '';
 
-        // Formata valores
-        const colawbFormatado = colawb.length >= 3 ? `${awb.slice(0, 3)}-${awb.slice(3)}` : awb;
+        const colawbFormatado = colawb.length >= 3 ? `${colawb.slice(0, 3)}-${colawb.slice(3)}` : colawb;
         const colvolsFormatado = colvols;
         const colpesoFormatado = `${colpeso} ${colunid}`.toUpperCase();
         const coldestinoFormatado = coldestino.toUpperCase();
@@ -364,23 +358,18 @@ function copiarTabela() {
         const colservicoFormatado = colservico.toUpperCase();
         const colporaoFormatado = colporao.toUpperCase();
 
-        // Monta linha da tabela com padding fixo
-        mensagem += `║ ${colawbFormatado.padEnd(15)} | ${colvolsFormatado.padEnd(6)} | ${colpesoFormatado.padEnd(10)} | ${coldestinoFormatado.padEnd(9)} | ${coltipoFormatado.padEnd(9)} | ${colservicoFormatado.padEnd(17)} | ${colporaoFormatado.padEnd(6)} ║\n`;
-
+        mensagem += `║ ${colawbFormatado.padEnd(14)} | ${colvolsFormatado.padEnd(4)} | ${colpesoFormatado.padEnd(10)} | ${coldestinoFormatado.padEnd(7)} | ${coltipoFormatado.padEnd(4)} | ${colservicoFormatado.padEnd(12)} | ${colporaoFormatado.padEnd(5)} ║\n`;
     });
 
-    mensagem += `╚════════════════════════════════════════════════════════════════════════════════════════════════╝\n\n`;
+    mensagem += `╚════════════════════════════════════════════════════════════════════════════════════════════════════════════╝\n\n`;
 
-
-    // Observações
     const obs = document.getElementById('observacoes')?.value.trim();
     if (obs) {
         mensagem += `📌 Observações:\n${obs}\n\n`;
     }
 
-    mensagem += `Atenciosamente,\n`
+    mensagem += `Atenciosamente,\n`;
 
-    // Copia para área de transferência
     navigator.clipboard.writeText(mensagem).then(() => {
         alert("✅ Mensagem copiada para a área de transferência!");
     }).catch(err => {
