@@ -302,11 +302,12 @@ function copiarTabela() {
         'origem',
         'horaSaida',
         'destino',
-        'horaChegada'
+        'horaChegada',
+        'tripulante'
     ];
 
     // Cabeçalho inicial
-    let mensagem = `🚩 PRÉ-ALERTA DE VOO\n\n`;
+    let mensagem = `⚠ PRÉ-ALERTA DE VOO ⚠\n\n`;
 
     camposFormulario.forEach(id => {
         const elem = document.getElementById(id);
@@ -318,9 +319,10 @@ function copiarTabela() {
             equip_acft: '🔢 Equipamento',
             data_voo: '📅 Data',
             origem: '🛫 Origem',
-            horaSaida: '🕒 Hora/Saída',
+            horaSaida: '🕒 H/Saída',
             destino: '🛬 Destino',
-            horaChegada: '🕒 Hora/Chegada',
+            horaChegada: '🕒 H/Chegada',
+            tripulante: '✅ Tripulante',
         }[id] || id;
 
         let valor = (elem.value || '').toString().trim();
@@ -345,7 +347,7 @@ function copiarTabela() {
         const colvols = linha.querySelector('td:nth-child(2) input')?.value.trim() || '';
         const colpeso = linha.querySelector('td:nth-child(3) input')?.value.trim() || '';
         const colunid = linha.querySelector('td:nth-child(4) select')?.value.trim() || '';
-        const coldestino = linha.querySelector('td:nth-child(5) input')?.value.trim() || '';
+        const coldestinocga = linha.querySelector('td:nth-child(5) input')?.value.trim() || '';
         const coltipo = linha.querySelector('td:nth-child(7) select')?.value.trim() || '';
         const colservico = linha.querySelector('td:nth-child(8) select')?.value.trim() || '';
         const colporao = linha.querySelector('td:nth-child(9) select')?.value.trim() || '';
@@ -353,12 +355,12 @@ function copiarTabela() {
         const colawbFormatado = colawb.length >= 3 ? `${colawb.slice(0, 3)}-${colawb.slice(3)}` : colawb;
         const colvolsFormatado = colvols;
         const colpesoFormatado = `${colpeso} ${colunid}`.toUpperCase();
-        const coldestinoFormatado = coldestino.toUpperCase();
+        const coldestinocgaFormatado = coldestinocga.toUpperCase();
         const coltipoFormatado = coltipo.toUpperCase();
         const colservicoFormatado = colservico.toUpperCase();
         const colporaoFormatado = colporao.toUpperCase();
 
-        mensagem += `║ ${colawbFormatado.padEnd(14)} | ${colvolsFormatado.padEnd(4)} | ${colpesoFormatado.padEnd(10)} | ${coldestinoFormatado.padEnd(7)} | ${coltipoFormatado.padEnd(4)} | ${colservicoFormatado.padEnd(12)} | ${colporaoFormatado.padEnd(5)} ║\n`;
+        mensagem += `║ ${colawbFormatado.padEnd(14)} | ${colvolsFormatado.padEnd(4)} | ${colpesoFormatado.padEnd(10)} | ${coldestinocgaFormatado.padEnd(7)} | ${coltipoFormatado.padEnd(4)} | ${colservicoFormatado.padEnd(12)} | ${colporaoFormatado.padEnd(5)} ║\n`;
     });
 
     mensagem += `╚════════════════════════════════════════════════════════════════════════════════════════════════════════════╝\n\n`;
